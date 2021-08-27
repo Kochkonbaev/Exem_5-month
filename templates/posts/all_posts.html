@@ -1,0 +1,34 @@
+{% extends 'base.html' %}  
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center" style="margin: bottom 20px;">
+  <h1>Самые новостные новости</h1>
+  <p>Добро пожаловать на мой сайт!</p> 
+</div>
+
+    {% for one_news in all_posts %}
+    <div class="card text-center">
+        <div class="card-header">
+            {{user.email}}
+        </div>
+        <div class="card-body">
+        <h5 class="card-title">{{one_news.title}}</h5>
+        <p class="card-text">{{one_news.body| truncatechars:15 }}</p>
+        <a href={% url 'post_detail' pk=one_news.pk %} class="btn btn-primary">Читать полностью</a>
+        </div>
+        <div class="card-footer text-muted">
+            {{ one_news.creation_date }}
+        </div>
+    
+    </div>
+    {% endfor %}
+    
+   
+
+
+{% endblock %}

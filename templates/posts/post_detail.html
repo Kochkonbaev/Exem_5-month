@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{post_detail.title}}
+{% endblock %}
+
+{% block content %}
+
+    <font size=6>{{post_detail.title}}</font>
+    <br>
+    <h3>{{post_detail.body}}</h3>>
+    
+    
+{% if request.user.is_authenticated%} 
+    <a class="btn btn-default" href="{% url 'post_delete' pk=post_detail.pk %}"><span class="glyphicon glyphicon-remove"></span> Удалить</a>
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post_detail.pk %}"><span class="glyphicon glyphicon-pencil"></span> Редактировать</a>
+      
+{% endif %}
+
+{% endblock %}
